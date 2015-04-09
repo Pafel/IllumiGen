@@ -1,23 +1,23 @@
-
+#include <stdlib.h>
 
 typedef struct gram{
 	char **words;
 }ngram;
 
 typedef struct base{
-	gram **grams;
+	ngram **grams;
 	int lenght;
-	int r;
-	int n[lenght][lenght];
+	int r, k;
+	int **n;
 }nbase;
 
-nbase new_base (int r);									//zwraca wskaźnik na nową, pustą bazę
+void base_new (nbase * base, int n);
 
-void add_gram (nbase * base, char **words);		// dodaje n-gram do bazy
+void add_gram (int k, nbase * base, char **words);		// dodaje n-gram do bazy
 
-int check_gram (ngram gram, nbase base);			// sprawdza, czy n-gram nie jest już w bazie
-														// jeśli jest zwraca 1, jeśli nie ma 0
+int check_gram (char **gram, nbase * base);		// sprawdza, czy n-gram nie jest już w bazie
+								// jeśli jest zwraca 1, jeśli nie ma 0
 
-void base_gen (nbase base, FILE *out);					// generuje plik z danymi przejściowe
+void base_gen (nbase * base, char *out);				// generuje plik z danymi przejściowe
 
-void base_load (nbase base, FILE *in);					// wczytuje bazę z pliku przejściowego
+void base_load (nbase * base, char *in);				// wczytuje bazę z pliku przejściowego
