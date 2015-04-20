@@ -6,17 +6,21 @@ typedef struct gram{
 
 typedef struct base{
 	ngram **grams;
-	int lenght;
-	int r, k;
+	int length;
+	int r;
 	int **n;
 }nbase;
 
-void base_new (nbase * base, int n);
+nbase base_new (int n);
 
-void add_gram (int k, nbase * base, char **words);		// dodaje n-gram do bazy
+void add_gram (nbase * base, char **words);			// dodaje n-gram do bazy
 
-int check_gram (char **gram, nbase * base);		// sprawdza, czy n-gram nie jest już w bazie
-								// jeśli jest zwraca 1, jeśli nie ma 0
+void add_n (int a, int b, nbase * base);
+
+int check_gram (char **gram, nbase * base);				// sprawdza, czy n-gram nie jest już w bazie
+									// jeśli jest zwraca index, jeśli nie ma -1
+
+ngram * new_gram (char **gram_words, int n);
 
 void base_gen (nbase * base, char *out);				// generuje plik z danymi przejściowe
 

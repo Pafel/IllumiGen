@@ -6,15 +6,16 @@ int main()
 {
 	int k = 0;
 	int n = 2;
-	nbase base;
+	int i;
+	nbase base = base_new(n);
 
-	base_new(&base, n);
-
-	char **text;
+	char **text = malloc(sizeof(char**));
 	text[0] = "Ala";
 	text[1] = "ma";
 
-	add_gram(&k, &base, text);
-	printf ("%d\n", check_gram(text, &base));
+	for(i = 0 ; i < 10 ; i++) {
+		add_gram(k, &base, text);
+		printf ("%d\n", check_gram(text, &base));
+	}
 	return 0;
 }
