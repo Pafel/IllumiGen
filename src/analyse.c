@@ -1,4 +1,3 @@
-#include "base.h"
 #include "analyse.h"
 
 void analyse (nbase * base, char *inp)
@@ -10,10 +9,11 @@ void analyse (nbase * base, char *inp)
 	int k = 0;
 
 	FILE *input;
+
 	input = fopen(inp, "r");
 
 	char *word = malloc(sizeof (char) * 32);
-	char **string = malloc(sizeof (char*));
+	char **string = malloc(sizeof (char*) * r);
 	for (i = 0 ; i < r ; i++)
 		string[i] = malloc(sizeof (char) * 32);
  
@@ -49,8 +49,42 @@ void analyse (nbase * base, char *inp)
 		else
 			base->n[index_prev][index]++;
 	}
-			
-	
-	free(word);
-	free(string);
+}
+
+int count_words(char *in)
+{
+	int n = 0;
+	char *str = malloc (sizeof(char) * 32);
+	FILE *inp = fopen(in, "r");
+	if (inp == NULL)
+		return -1;
+	while (fscanf(inp, "%s", str) == 1)
+		n++;
+
+	return n;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

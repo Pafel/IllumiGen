@@ -1,4 +1,9 @@
+#ifndef BASE_H
+#define BASE_H
+
 #include <stdlib.h>
+#include <string.h>
+#include <stdio.h>
 
 typedef struct gram{
 	char **words;
@@ -11,7 +16,7 @@ typedef struct base{
 	int **n;
 }nbase;
 
-nbase base_new (int n);
+nbase base_new (int n, int k);
 
 void add_gram (nbase * base, char **words);			// dodaje n-gram do bazy
 
@@ -24,4 +29,6 @@ ngram * new_gram (char **gram_words, int n);
 
 void base_gen (nbase * base, char *out);				// generuje plik z danymi przejściowe
 
-void base_load (nbase * base, char *in);				// wczytuje bazę z pliku przejściowego
+nbase base_load (char *in);				// wczytuje bazę z pliku przejściowego
+
+#endif
